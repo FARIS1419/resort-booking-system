@@ -4,7 +4,7 @@
 
 // استبدل هذا الرابط برابط Google Apps Script الخاص بك
 // يمكنك الحصول عليه بعد نشر السكربت
-const API_URL = 'https://script.google.com/macros/s/AKfycbxgD58j68TUN0lsnLtwp3xlphfhcZrGvQFTd47TLIFrk-05kfo2za17LYdbIgOaXQL1Nw/exec/usercopy';
+const API_URL = 'https://script.google.com/macros/s/AKfycbxgD58j68TUN0lsnLtwp3xlphfhcZrGvQFTd47TLIFrk-05kfo2za17LYdbIgOaXQL1Nw/usercopy';
 
 // إعدادات الجلسة
 const SESSION_TIMEOUT = 20 * 60 * 1000; // 20 دقيقة بالميلي ثانية
