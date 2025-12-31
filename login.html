@@ -4,41 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول - نظام إدارة الحجوزات</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
             --success-color: #27ae60;
             --danger-color: #e74c3c;
+            --warning-color: #f39c12;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05 );
+            --transition: all 0.3s ease;
         }
 
         * {
-            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        body {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        html, body {
+            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--primary-color);
+            direction: rtl;
+            text-align: right;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0;
-            padding: 20px;
         }
 
         .login-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+
+        .login-card {
             background: white;
-            border-radius: 15px;
+            border-radius: var(--border-radius);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             padding: 40px;
-            max-width: 400px;
-            width: 100%;
             animation: slideUp 0.5s ease-out;
         }
 
@@ -59,9 +69,9 @@
         }
 
         .login-header h1 {
-            color: var(--primary-color);
             font-size: 28px;
             font-weight: 700;
+            color: var(--primary-color);
             margin-bottom: 10px;
         }
 
@@ -70,42 +80,32 @@
             font-size: 14px;
         }
 
-        .logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 40px;
-        }
-
         .form-group {
             margin-bottom: 20px;
         }
 
         .form-label {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 8px;
             display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 14px;
         }
 
         .form-control {
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            width: 100%;
             padding: 12px 15px;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+            transition: var(--transition);
         }
 
         .form-control:focus {
+            outline: none;
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.15);
-            outline: none;
         }
 
         .form-control::placeholder {
@@ -122,42 +122,38 @@
         .pin-input {
             width: 50px;
             height: 50px;
-            text-align: center;
             font-size: 24px;
-            font-weight: bold;
+            text-align: center;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            transition: var(--transition);
         }
 
         .pin-input:focus {
+            outline: none;
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.15);
         }
 
-        .pin-input.filled {
-            background-color: var(--light-color);
-            border-color: var(--secondary-color);
-        }
-
-        .remember-me {
+        .checkbox-group {
             display: flex;
             align-items: center;
+            gap: 10px;
             margin: 20px 0;
         }
 
-        .remember-me input {
-            margin-right: 10px;
+        .checkbox-group input[type="checkbox"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
         }
 
-        .remember-me label {
+        .checkbox-group label {
             margin: 0;
             cursor: pointer;
-            color: var(--primary-color);
             font-size: 14px;
+            color: #555;
         }
 
         .btn-login {
@@ -166,12 +162,12 @@
             background: linear-gradient(135deg, var(--secondary-color), #2980b9);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: var(--border-radius);
             font-weight: 600;
+            font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
+            transition: var(--transition);
+            margin-top: 10px;
         }
 
         .btn-login:hover {
@@ -184,15 +180,16 @@
         }
 
         .btn-login:disabled {
-            background: #bdc3c7;
+            opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
 
         .alert {
-            border-radius: 8px;
-            border: none;
+            padding: 15px;
+            border-radius: var(--border-radius);
             margin-bottom: 20px;
+            display: none;
             animation: slideDown 0.3s ease-out;
         }
 
@@ -207,14 +204,50 @@
             }
         }
 
-        .alert-danger {
-            background-color: #fadbd8;
-            color: #c0392b;
+        .alert.show {
+            display: block;
         }
 
         .alert-success {
             background-color: #d5f4e6;
-            color: #27ae60;
+            color: var(--success-color);
+            border-right: 4px solid var(--success-color);
+        }
+
+        .alert-danger {
+            background-color: #fadbd8;
+            color: var(--danger-color);
+            border-right: 4px solid var(--danger-color);
+        }
+
+        .alert-info {
+            background-color: #d6eaf8;
+            color: var(--secondary-color);
+            border-right: 4px solid var(--secondary-color);
+        }
+
+        .spinner-border {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            vertical-align: text-bottom;
+            border: 0.25em solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: spinner-border 0.75s linear infinite;
+        }
+
+        @keyframes spinner-border {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 12px;
         }
 
         .error-shake {
@@ -227,38 +260,13 @@
             75% { transform: translateX(10px); }
         }
 
-        .loading-spinner {
-            display: none;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .spinner-border {
-            color: var(--secondary-color);
-        }
-
-        .attempt-counter {
-            text-align: center;
-            color: #e74c3c;
-            font-size: 12px;
-            margin-top: 10px;
-            display: none;
-        }
-
-        .footer-text {
-            text-align: center;
-            color: #95a5a6;
-            font-size: 12px;
-            margin-top: 20px;
-        }
-
         @media (max-width: 480px) {
-            .login-container {
-                padding: 30px 20px;
+            .login-card {
+                padding: 25px;
             }
 
             .login-header h1 {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .pin-input {
@@ -271,175 +279,198 @@
 </head>
 <body>
     <div class="login-container">
-        <div class="login-header">
-            <div class="logo">
-                <i class="fas fa-calendar-check"></i>
-            </div>
-            <h1>نظام الحجوزات</h1>
-            <p>إدارة حجوزات الاستراحات والشاليهات</p>
-        </div>
-
-        <div id="alertContainer"></div>
-
-        <form id="loginForm">
-            <div class="form-group">
-                <label class="form-label" for="username">
-                    <i class="fas fa-user"></i> اسم المستخدم
-                </label>
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    id="username" 
-                    placeholder="أدخل اسم المستخدم"
-                    autocomplete="off"
-                    required
-                >
+        <div class="login-card">
+            <div class="login-header">
+                <h1>🏨 نظام الحجوزات</h1>
+                <p>تسجيل الدخول الآمن</p>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">
-                    <i class="fas fa-lock"></i> رمز الدخول (PIN)
-                </label>
-                <div class="pin-input-group" id="pinContainer"></div>
-                <input type="hidden" id="pinInput">
-            </div>
+            <div id="alertContainer"></div>
 
-            <div class="remember-me">
-                <input type="checkbox" id="rememberMe">
-                <label for="rememberMe">تذكرني</label>
-            </div>
-
-            <div class="loading-spinner" id="loadingSpinner">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">جاري التحميل...</span>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">اسم المستخدم</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="username" 
+                        placeholder="أدخل اسم المستخدم"
+                        required
+                    >
                 </div>
+
+                <div class="form-group">
+                    <label class="form-label">رمز الدخول (PIN)</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="pin" 
+                        placeholder="أدخل الرمز (4-6 أرقام)"
+                        maxlength="6"
+                        required
+                    >
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">تذكرني</label>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> دخول
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>نظام إدارة حجوزات الاستراحات والشاليهات</p>
+                <p>الإصدار 1.0.0</p>
             </div>
-
-            <button type="submit" class="btn-login" id="loginBtn">
-                <i class="fas fa-sign-in-alt"></i> دخول
-            </button>
-
-            <div class="attempt-counter" id="attemptCounter">
-                محاولات متبقية: <span id="attemptsLeft">3</span>
-            </div>
-        </form>
-
-        <div class="footer-text">
-            <i class="fas fa-shield-alt"></i> نظام آمن محمي
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/config.js"></script>
-    <script src="js/auth.js"></script>
     <script>
-        // تهيئة صفحة تسجيل الدخول
-        document.addEventListener('DOMContentLoaded', function() {
-            initLoginPage();
-        });
+        // ============================================
+        // الإعدادات الأساسية
+        // ============================================
+        const API_URL = 'https://script.google.com/macros/s/AKfycbxgD58j68TUN0lsnLtwp3xlphfhcZrGvQFTd47TLIFrk-05kfo2za17LYdbIgOaXQL1Nw/usercopy';
+        const SESSION_TIMEOUT = 20 * 60 * 1000; // 20 دقيقة
+        const APP_NAME = 'نظام إدارة حجوزات الاستراحات';
 
-        function initLoginPage() {
-            const pinContainer = document.getElementById('pinContainer');
-            const pinInput = document.getElementById('pinInput');
+        // ============================================
+        // دوال التنبيهات
+        // ============================================
+        function showAlert(message, type = 'info', duration = 5000 ) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertId = 'alert-' + Date.now();
             
-            // إنشاء 6 حقول للرمز
-            for (let i = 0; i < 6; i++) {
-                const input = document.createElement('input');
-                input.type = 'password';
-                input.className = 'pin-input';
-                input.maxLength = '1';
-                input.inputMode = 'numeric';
-                input.dataset.index = i;
-                
-                input.addEventListener('input', function(e) {
-                    if (this.value && this.value.match(/[0-9]/)) {
-                        this.classList.add('filled');
-                        if (this.nextElementSibling) {
-                            this.nextElementSibling.focus();
-                        }
-                    } else if (!this.value) {
-                        this.classList.remove('filled');
-                    } else {
-                        this.value = '';
-                    }
-                    updatePinInput();
-                });
-                
-                input.addEventListener('keydown', function(e) {
-                    if (e.key === 'Backspace' && !this.value && this.previousElementSibling) {
-                        this.previousElementSibling.focus();
-                    }
-                });
-                
-                pinContainer.appendChild(input);
+            const alertHTML = `
+                <div class="alert alert-${type} show" id="${alertId}">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'danger' ? 'exclamation-circle' : 'info-circle'}"></i>
+                    ${message}
+                </div>
+            `;
+            
+            alertContainer.insertAdjacentHTML('beforeend', alertHTML);
+            
+            if (duration > 0) {
+                setTimeout(() => {
+                    const alert = document.getElementById(alertId);
+                    if (alert) alert.remove();
+                }, duration);
             }
-            
-            // معالجة النموذج
-            document.getElementById('loginForm').addEventListener('submit', handleLogin);
         }
 
-        function updatePinInput() {
-            const pinInputs = document.querySelectorAll('.pin-input');
-            const pin = Array.from(pinInputs).map(input => input.value).join('');
-            document.getElementById('pinInput').value = pin;
+        // ============================================
+        // دوال التحقق
+        // ============================================
+        function validateInput(username, pin) {
+            if (!username || !username.trim()) {
+                showAlert('الرجاء إدخال اسم المستخدم', 'danger');
+                return false;
+            }
+
+            if (!pin || pin.length < 4 || pin.length > 6) {
+                showAlert('الرمز يجب أن يكون من 4 إلى 6 أرقام', 'danger');
+                return false;
+            }
+
+            if (!/^\d+$/.test(pin)) {
+                showAlert('الرمز يجب أن يحتوي على أرقام فقط', 'danger');
+                return false;
+            }
+
+            return true;
         }
 
+        // ============================================
+        // دوال الجلسة
+        // ============================================
+        function saveSession(userData) {
+            const sessionData = {
+                userId: userData.userId,
+                username: userData.username,
+                fullName: userData.fullName,
+                role: userData.role,
+                email: userData.email,
+                loginTime: new Date().getTime(),
+                token: generateToken()
+            };
+
+            localStorage.setItem('session', JSON.stringify(sessionData));
+            localStorage.setItem('sessionTime', new Date().getTime().toString());
+        }
+
+        function generateToken() {
+            return 'token_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+
+        function isSessionValid() {
+            const sessionTime = localStorage.getItem('sessionTime');
+            if (!sessionTime) return false;
+
+            const elapsed = new Date().getTime() - parseInt(sessionTime);
+            return elapsed < SESSION_TIMEOUT;
+        }
+
+        // ============================================
+        // معالج تسجيل الدخول
+        // ============================================
         async function handleLogin(e) {
             e.preventDefault();
-            
+
             const username = document.getElementById('username').value.trim();
-            const pin = document.getElementById('pinInput').value;
+            const pin = document.getElementById('pin').value.trim();
             const rememberMe = document.getElementById('rememberMe').checked;
-            
-            if (!username || pin.length < 4) {
-                showAlert('يرجى إدخال اسم المستخدم ورمز الدخول الصحيح', 'danger');
+            const loginBtn = document.getElementById('loginBtn');
+
+            // التحقق من الإدخال
+            if (!validateInput(username, pin)) {
+                document.getElementById('loginForm').classList.add('error-shake');
+                setTimeout(() => {
+                    document.getElementById('loginForm').classList.remove('error-shake');
+                }, 500);
                 return;
             }
-            
-            const loginBtn = document.getElementById('loginBtn');
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            
+
+            // تعطيل الزر
             loginBtn.disabled = true;
-            loadingSpinner.style.display = 'block';
-            
+            loginBtn.innerHTML = '<span class="spinner-border"></span> جاري المعالجة...';
+
             try {
+                // إرسال طلب الدخول
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: new URLSearchParams({
+                    body: JSON.stringify({
                         action: 'login',
                         username: username,
                         pin: pin
                     })
                 });
-                
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
                 const data = await response.json();
-                
+
                 if (data.success) {
-                    // حفظ بيانات الجلسة
-                    const sessionData = {
-                        user: data.data,
-                        token: data.data.token,
-                        loginTime: new Date().getTime(),
-                        rememberMe: rememberMe
-                    };
-                    
+                    // حفظ الجلسة
+                    saveSession(data.user);
+
+                    // حفظ "تذكرني"
                     if (rememberMe) {
-                        localStorage.setItem('sessionData', JSON.stringify(sessionData));
-                    } else {
-                        sessionStorage.setItem('sessionData', JSON.stringify(sessionData));
+                        localStorage.setItem('rememberMe', 'true');
+                        localStorage.setItem('rememberedUsername', username);
                     }
-                    
-                    showAlert('تم تسجيل الدخول بنجاح', 'success');
+
+                    showAlert('تم تسجيل الدخول بنجاح! جاري التوجيه...', 'success', 2000);
+
+                    // التوجيه إلى لوحة التحكم
                     setTimeout(() => {
                         window.location.href = 'dashboard.html';
-                    }, 1000);
+                    }, 2000);
                 } else {
-                    showAlert(data.message || 'فشل تسجيل الدخول', 'danger');
-                    clearPinInputs();
+                    showAlert(data.message || 'بيانات الدخول غير صحيحة', 'danger');
                     document.getElementById('loginForm').classList.add('error-shake');
                     setTimeout(() => {
                         document.getElementById('loginForm').classList.remove('error-shake');
@@ -447,35 +478,41 @@
                 }
             } catch (error) {
                 console.error('خطأ:', error);
-                showAlert('حدث خطأ في الاتصال. تأكد من رابط API', 'danger');
+                showAlert('خطأ في الاتصال: ' + error.message, 'danger');
             } finally {
+                // إعادة تفعيل الزر
                 loginBtn.disabled = false;
-                loadingSpinner.style.display = 'none';
+                loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> دخول';
             }
         }
 
-        function clearPinInputs() {
-            document.querySelectorAll('.pin-input').forEach(input => {
-                input.value = '';
-                input.classList.remove('filled');
-            });
-            document.getElementById('pinInput').value = '';
+        // ============================================
+        // تحميل البيانات المحفوظة
+        // ============================================
+        function loadRememberedUsername() {
+            const rememberMe = localStorage.getItem('rememberMe');
+            const username = localStorage.getItem('rememberedUsername');
+
+            if (rememberMe === 'true' && username) {
+                document.getElementById('username').value = username;
+                document.getElementById('rememberMe').checked = true;
+            }
         }
 
-        function showAlert(message, type) {
-            const alertContainer = document.getElementById('alertContainer');
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type}`;
-            alertDiv.innerHTML = `
-                <i class="fas fa-${type === 'danger' ? 'exclamation-circle' : 'check-circle'}"></i>
-                ${message}
-            `;
-            alertContainer.innerHTML = '';
-            alertContainer.appendChild(alertDiv);
-            
-            setTimeout(() => {
-                alertDiv.remove();
-            }, 5000);
+        // ============================================
+        // معالجات الأحداث
+        // ============================================
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+        // تحميل البيانات المحفوظة عند فتح الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            loadRememberedUsername();
+            document.getElementById('username').focus();
+        });
+
+        // التحقق من الجلسة الحالية
+        if (localStorage.getItem('session') && isSessionValid()) {
+            window.location.href = 'dashboard.html';
         }
     </script>
 </body>
